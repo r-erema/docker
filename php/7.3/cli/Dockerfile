@@ -18,6 +18,6 @@ RUN apk add php7-dev \
     && pecl install xdebug-2.7.0beta1 \
     && docker-php-ext-enable xdebug
 
-COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 WORKDIR /var/www
