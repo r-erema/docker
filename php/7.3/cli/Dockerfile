@@ -14,7 +14,7 @@ RUN apk update
 
 RUN apk add g++ make
 
-RUN apk add php7-dev \
+RUN apk add php7-dev curl \
     && pecl install xdebug-2.7.0beta1 \
     && docker-php-ext-enable xdebug
 
