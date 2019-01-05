@@ -20,4 +20,6 @@ RUN apk add php7-dev curl \
 
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
+USER www-data
+
 WORKDIR /var/www
