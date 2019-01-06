@@ -2,6 +2,7 @@ FROM php:7.3-fpm-alpine
 
 MAINTAINER Roma Erema
 
+ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV PHP_XDEBUG_DEFAULT_ENABLE ${PHP_XDEBUG_DEFAULT_ENABLE:-1}
 ENV PHP_XDEBUG_REMOTE_ENABLE ${PHP_XDEBUG_REMOTE_ENABLE:-1}
 ENV PHP_XDEBUG_REMOTE_HOST ${PHP_XDEBUG_REMOTE_HOST:-"127.0.0.1"}
@@ -21,6 +22,8 @@ RUN apk add php7-dev curl \
     && docker-php-ext-enable xdebug mongodb
 
 RUN docker-php-ext-install pdo_mysql
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
