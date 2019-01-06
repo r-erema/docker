@@ -20,6 +20,8 @@ RUN apk add php7-dev curl \
     && pecl install xdebug-2.7.0beta1 \
     && docker-php-ext-enable xdebug
 
+RUN docker-php-ext-install pdo_mysql
+
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 WORKDIR /var/www
