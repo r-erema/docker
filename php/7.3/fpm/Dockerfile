@@ -1,4 +1,4 @@
-FROM php:7.3.0-cli-alpine
+FROM php:7.3-fpm-alpine
 
 MAINTAINER Roma Erema
 
@@ -23,3 +23,5 @@ RUN apk add php7-dev curl \
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 WORKDIR /var/www
+
+CMD ["php-fpm"]
