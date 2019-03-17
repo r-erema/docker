@@ -19,6 +19,8 @@ RUN apk add --update icu-dev g++ make git php7-dev postgresql-dev curl \
     && pecl install xdebug-2.7.0beta1 \
     && docker-php-ext-enable xdebug
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 WORKDIR /var/www
