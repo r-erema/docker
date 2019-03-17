@@ -21,7 +21,7 @@ RUN apk add php7-dev curl \
     && pecl install xdebug-2.7.0beta1 mongodb \
     && docker-php-ext-enable xdebug mongodb
 
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql pdo_pgsql
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

@@ -17,9 +17,7 @@ RUN apk update
 RUN apk add g++ make git php7-dev curl \
 
     && apk add --update icu-dev \
-    && docker-php-ext-install intl \
-
-    && docker-php-ext-install sysvsem \
+    && docker-php-ext-install intl sysvsem pdo_mysql pdo_pgsql \
 
     && pecl install xdebug-2.7.0beta1 \
     && docker-php-ext-enable xdebug
