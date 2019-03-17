@@ -17,11 +17,10 @@ RUN apk update
 
 RUN apk add g++ make git
 
-RUN apk add php7-dev curl \
+RUN apk --update add php7-dev postgresql-dev curl \
+    && docker-php-ext-install pdo_pgsql pdo_mysql \
     && pecl install xdebug-2.7.0beta1 mongodb \
     && docker-php-ext-enable xdebug mongodb
-
-RUN docker-php-ext-install pdo_mysql pdo_pgsql
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

@@ -14,11 +14,8 @@ ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 
 RUN apk update
 
-RUN apk add g++ make git php7-dev curl \
-
-    && apk add --update icu-dev \
-    && docker-php-ext-install intl sysvsem pdo_mysql pdo_pgsql \
-
+RUN apk add --update icu-dev g++ make git php7-dev postgresql-dev curl \
+    && docker-php-ext-install pdo_pgsql intl sysvsem pdo_mysql \
     && pecl install xdebug-2.7.0beta1 \
     && docker-php-ext-enable xdebug
 
