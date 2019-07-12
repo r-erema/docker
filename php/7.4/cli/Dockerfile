@@ -1,4 +1,4 @@
-FROM php:7.3.2-cli-alpine
+FROM php:7.4-rc-cli-alpine
 
 MAINTAINER Roma Erema
 
@@ -16,7 +16,7 @@ RUN apk update
 
 RUN apk add --update icu-dev g++ make git php7-dev postgresql-dev curl \
     && docker-php-ext-install pdo_pgsql intl sysvsem pdo_mysql bcmath sockets \
-    && pecl install xdebug-2.7.0beta1 mongodb \
+    && pecl install xdebug-2.8.0alpha1 mongodb \
     && docker-php-ext-enable xdebug mongodb
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
