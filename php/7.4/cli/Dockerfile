@@ -1,4 +1,4 @@
-FROM php:7.4-rc-cli-alpine
+FROM php:7.4.0alpha3-cli-alpine
 
 MAINTAINER Roma Erema
 
