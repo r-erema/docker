@@ -1,4 +1,4 @@
-FROM php:7.4.0RC6-fpm-alpine
+FROM php:7.4.0-fpm-alpine
 
 MAINTAINER Roma Erema
 
