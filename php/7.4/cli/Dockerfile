@@ -1,4 +1,4 @@
-FROM php:7.4.0alpha3-cli-alpine
+FROM php:cli-alpine
 
 MAINTAINER Roma Erema
 
@@ -14,9 +14,11 @@ ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 
 RUN apk update
 
-RUN apk add --update icu-dev g++ make git php7-dev postgresql-dev libsodium-dev curl \
-    && docker-php-ext-install pdo_pgsql intl sysvsem pdo_mysql bcmath sockets sodium \
-    && pecl install xdebug-2.8.0alpha1 mongodb \
+RUN apk add g++ make git
+
+RUN apk --update add php7-dev postgresql-dev libzip-dev curl \
+    && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip \
+    && pecl install xdebug-2.8.0 mongodb \
     && docker-php-ext-enable xdebug mongodb
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
