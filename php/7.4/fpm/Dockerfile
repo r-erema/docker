@@ -18,7 +18,7 @@ RUN apk update
 RUN apk add g++ make git
 
 RUN apk --update add php7-dev postgresql-dev libzip-dev curl \
-    && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip \
+    && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip opcache \
     && pecl install xdebug-2.8.0 mongodb \
     && docker-php-ext-enable xdebug mongodb
 
