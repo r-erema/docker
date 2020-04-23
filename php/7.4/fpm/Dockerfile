@@ -13,11 +13,9 @@ ENV PHP_XDEBUG_IDEKEY ${PHP_XDEBUG_IDEKEY:-PHPSTORM}
 ENV PHP_XDEBUG_PROFILER_ENABLE ${PHP_XDEBUG_PROFILER_ENABLE:-0}
 ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 
-RUN apk update
+RUN apk --update add g++ make git
 
-RUN apk add g++ make git
-
-RUN apk --update add php7-dev postgresql-dev libzip-dev curl icu-dev \
+RUN apkadd php7-dev postgresql-dev libzip-dev curl icu-dev \
     && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip opcache intl sysvsem \
     && pecl install xdebug-2.9.4 mongodb \
     && docker-php-ext-enable xdebug mongodb
