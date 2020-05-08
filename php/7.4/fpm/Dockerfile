@@ -15,10 +15,17 @@ ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 
 RUN apk --update add g++ make git
 
+ARG INSTALL_XDEBUG=false
+RUN \
+    if [ ${INSTALL_XDEBUG} = true ]; then \
+        pecl install  xdebug-2.9.5 \
+        && docker-php-ext-enable xdebug \
+;fi
+
 RUN apkadd php7-dev postgresql-dev libzip-dev curl icu-dev \
     && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip opcache intl sysvsem \
-    && pecl install xdebug-2.9.4 mongodb \
-    && docker-php-ext-enable xdebug mongodb
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
