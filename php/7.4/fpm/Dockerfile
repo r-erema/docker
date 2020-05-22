@@ -16,7 +16,7 @@ ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 RUN apk --update add g++ make git
 
 RUN apkadd php7-dev postgresql-dev libzip-dev curl icu-dev \
-    && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip opcache intl sysvsem \
+    && docker-php-ext-install pdo_pgsql pdo_mysql bcmath sockets zip opcache intl sysvsem pcntl posix \
     && pecl install xdebug-2.9.5 mongodb \
     && docker-php-ext-enable xdebug mongodb
 
